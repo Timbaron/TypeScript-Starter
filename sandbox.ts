@@ -1,17 +1,38 @@
-let character = 'Timothy'
-let age = 30;
-let isBlackBelt = false;
+// arrays
+let names = ['timothy', 'deboarh', 'lois'];
 
-// character = 20;
-character = 'Tim';
-// age = 'Time';
-age = 30;
+// names = 'This will fail'; // Type 'string' is not assignable to type 'string[]'.
 
-// isBlackBelt = 'yes';
-isBlackBelt = true;
+names.push('james');
+// names.push(20); // 'This will fail'
+// names[0] = 100; // this will fail
 
-const circ = (diameter:number) => {
-    return diameter * Math.PI;
+let numbers = [10, 20, 30, 40];
+numbers.push(25); // OK
+// numbers.push('timothy'); // this will fail
+// numbers[1] = 'deborah'; // this will fail
+
+// MIXED ARRAY
+let mixed = ['ken', 4, 'chun-li', 8, 9, true];
+mixed.push('eunice'); // works
+mixed.push(50); // this will work
+mixed[0] = 6; // this is allowed
+
+// objects
+
+let akiode = {
+    name: 'akiode',
+    belt: 'black',
+    age: 21
 }
 
-console.log(circ(8));
+akiode.age = 30; // this is fine
+// akiode.age = 'thirty'; // will fail
+// ninja.age = '30'; // this will fail
+// akiode.skills = ['Coding', 'Goalkeeper']; // this will fail because 'Skills' does not exist in the initial object
+
+akiode = {
+    name: 'eunice',
+    belt: 'orange',
+    age: 20  // Will display error is commented out because it does not match the initial object
+}
