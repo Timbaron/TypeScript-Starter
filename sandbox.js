@@ -1,30 +1,29 @@
-// arrays
-var names = ['timothy', 'deboarh', 'lois'];
-// names = 'This will fail'; // Type 'string' is not assignable to type 'string[]'.
-names.push('james');
-// names.push(20); // 'This will fail'
-// names[0] = 100; // this will fail
-var numbers = [10, 20, 30, 40];
-numbers.push(25); // OK
-// numbers.push('timothy'); // this will fail
-// numbers[1] = 'deborah'; // this will fail
-// MIXED ARRAY
-var mixed = ['ken', 4, 'chun-li', 8, 9, true];
-mixed.push('eunice'); // works
-mixed.push(50); // this will work
-mixed[0] = 6; // this is allowed
-// objects
-var akiode = {
-    name: 'akiode',
-    belt: 'black',
-    age: 21
-};
-akiode.age = 30; // this is fine
-// akiode.age = 'thirty'; // will fail
-// ninja.age = '30'; // this will fail
-// akiode.skills = ['Coding', 'Goalkeeper']; // this will fail because 'Skills' does not exist in the initial object
-akiode = {
-    name: 'eunice',
-    belt: 'orange',
-    age: 20 // Will display error is commented out because it does not match the initial object
-};
+// EXPLICIT TYPES
+var character;
+var age;
+var isLoggedIn;
+// age = 'Timothy'; // Will fail because age is explicitly typed as a number 
+age = 40; // Will pass because age is explicitly typed as a number
+// isLoggedIn = 25; // Will fail because isLoggedIn is explicitly typed as a boolean
+isLoggedIn = true; // Will pass because isLoggedIn is explicitly typed as a boolean
+// ARRAYS
+var myArray = [];
+// myArray = [12, 25, 36]; // Will fail because myArray is explicitly typed as a string array
+myArray = ['Timothy', 'John', 'Jane'];
+// UNION TYPES
+var mixed = [];
+mixed.push('Timothy');
+mixed.push(25);
+// mixed.push(false); // Will fail because mixed is explicitly typed as a string or number array
+console.log(mixed);
+var uid; // Can be a string or a number
+uid = '123';
+uid = 123;
+// uid = false; // Will fail because uid is explicitly typed as a string or number
+// OBJECTS
+var Akiode;
+Akiode = { name: 'Timothy', age: 40 };
+// Akiode = 'Timothy'; // Will fail because Akiode is explicitly typed as an object
+var Akiode2;
+//  Akiode2 = [12, 25, 36]; // Will fail because Akiode2 is explicitly typed as an object with name, age, and isLoggedIn properties
+Akiode2 = { name: 'Timothy', age: 40, isLoggedIn: true }; // Will pass because Akiode2 is explicitly typed as an object with the properties name, age, and isLoggedIn
