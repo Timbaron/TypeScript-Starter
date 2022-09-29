@@ -1,26 +1,5 @@
-"use strict";
 // Classes
-class Invoice {
-    // readonly client: string; // Only Readable not Changable inside and outside of the class
-    // private details: string; // Private: Can only be accessed inside of the class
-    // public amount: number; // Public(Default):Can be accessed anywhere
-    // constructor(c:string, d:string, a:number){
-    //     this.client = c;
-    //     this.details = d;
-    //     this.amount = a;
-    // }
-    constructor(client, // Public
-    details, // Private
-    amount // Public
-    ) {
-        this.client = client;
-        this.details = details;
-        this.amount = amount;
-    }
-    format() {
-        return `${this.client} owns $${this.amount} for ${this.details}`;
-    }
-}
+import { Invoice } from './classess/invoice.js';
 const InvOne = new Invoice('Timothy', 'work on the EBS website', 250);
 const InvTwo = new Invoice('Bishop', 'work on the Jollof website', 650);
 // console.log(InvOne, InvTwo);
