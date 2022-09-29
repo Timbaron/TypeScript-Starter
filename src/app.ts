@@ -1,14 +1,19 @@
 // Classes
 class Invoice {
-    client: string;
-    details: string;
-    amount: number;
+    // readonly client: string; // Only Readable not Changable inside and outside of the class
+    // private details: string; // Private: Can only be accessed inside of the class
+    // public amount: number; // Public(Default):Can be accessed anywhere
 
-    constructor(c:string, d:string, a:number){
-        this.client = c;
-        this.details = d;
-        this.amount = a;
-    }
+    // constructor(c:string, d:string, a:number){
+    //     this.client = c;
+    //     this.details = d;
+    //     this.amount = a;
+    // }
+    constructor(
+        readonly client: string, // Public
+        private details: string, // Private
+        public amount: number // Public
+    ){}
 
     format(){
         return `${this.client} owns $${this.amount} for ${this.details}`;
@@ -24,7 +29,10 @@ let invoice: Invoice[] = []; // array of invoices, Only invoices can be added to
 invoice.push(InvOne);
 invoice.push(InvTwo);
 
-InvOne.client = 'Jesus';
+invoice.forEach(inv => {
+    console.log(inv.client, inv.amount, inv.format());
+})
+//InvOne.client = 'Jesus'; // Error because client is readonly
 InvTwo.amount = 900;
 
 console.log(InvOne, InvTwo);
