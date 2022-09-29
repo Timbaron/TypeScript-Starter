@@ -35,13 +35,15 @@ const amount = document.querySelector('#amount') as HTMLInputElement;
 
 form.addEventListener('submit', (e: Event) => {
     e.preventDefault();
+    let values: [string, string, number]
+    values = [tofrom.value, details.value, amount.valueAsNumber];
  
     let doc: HasFormatter;
     if(type.value === 'invoice') {
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber)
+        doc = new Invoice(...values);
     }
     else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber)
+        doc = new Payment(...values)
     }
     list.render(doc, type.value, 'end');
 })
@@ -81,5 +83,23 @@ const docFour: Resource<string[]> = {
     data: ['bread', 'milk', 'toilet roll']
 }
 
-console.log(docThree, docFour);
+// console.log(docThree, docFour);
 
+// TUPLES
+
+let arr = ['Timothy', 25, true];
+
+// let tup: [string,number,boolean] = [50, '25', true]; // Error because the order of the elements in the array is not the same as the order of the elements in the tuple
+let tup: [string,number,boolean] = ['Timothy', 25, true];
+//tup[0] = false; // Error because the order of the elements in the array is not the same as the order of the elements in the tuple
+tup[0] = 'Bishop';
+// tup[1] = 'Timothy'; // Error because the order of the elements in the array is not the same as the order of the elements in the tuple
+tup[1] = 50;
+// tup[2] = 25; // Error because the order of the elements in the array is not the same as the order of the elements in the tuple
+tup[2] = false;
+
+let student:[string, number];
+
+student = ['Timothy', 25];
+
+//student = [34,'Samuel'] // Error because the order of the elements in the array is not the same as the order of the elements in the tuple
