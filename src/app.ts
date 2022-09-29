@@ -1,4 +1,34 @@
-// Classes
+// Interface
+
+interface IsPerson {
+    name: string;
+    age: number;
+    speak(a:string): void
+    spend(a:number) :number;
+}
+
+const me: IsPerson = {
+    name: 'Timothy',
+    age: 30,
+    speak(text:string): void {
+        console.log(text);
+    },
+    spend(amount:number): number {
+        console.log('I spent', amount);
+        return amount;
+    },
+    //skills: [] // error because skills is not defined in the interface
+} 
+
+const greetPerson = (person: IsPerson)=> {
+    console.log('Hello', person.name);
+}
+
+// greetPerson(name: 'Timothy'); // error because name is not defined in the interface
+greetPerson(me); // works
+
+// let someone: IsPerson; 
+console.log(me)
 import {Invoice} from './classess/invoice.js'
 
 const InvOne = new Invoice('Timothy', 'work on the EBS website', 250);
