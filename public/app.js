@@ -10,12 +10,12 @@ let invoice = []; // array of invoices, Only invoices can be added to this array
 // invoice.push('hello'); // error because 'hello' is not an instance of invoice object
 invoice.push(InvOne);
 invoice.push(InvTwo);
-invoice.forEach(inv => {
-    console.log(inv.client, inv.amount, inv.format());
-});
-InvTwo.amount = 900;
-console.log(InvOne, InvTwo);
-console.log(invoice);
+// invoice.forEach(inv => {
+//     console.log(inv.client, inv.amount, inv.format());
+// })
+// InvTwo.amount = 900;
+// console.log(InvOne, InvTwo);
+// console.log(invoice);
 // const form = document.querySelector('form');
 const form = document.querySelector('.new-item-form');
 // inputs
@@ -34,3 +34,22 @@ form.addEventListener('submit', (e) => {
     }
     list.render(doc, type.value, 'end');
 });
+// GENERICS
+// Generics are a way to create reusable blocks of code that can be used with different types
+const addUID = (obj) => {
+    let uid = Math.floor(Math.random() * 100);
+    return Object.assign(Object.assign({}, obj), { uid });
+};
+let docOne = addUID({ name: 'Timothy', age: 25 });
+console.log(docOne.name);
+const docThree = {
+    uid: 1,
+    resourceName: 'person',
+    data: { name: 'Timothy' }
+};
+const docFour = {
+    uid: 2,
+    resourceName: 'shoppingList',
+    data: ['bread', 'milk', 'toilet roll']
+};
+console.log(docThree, docFour);

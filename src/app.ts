@@ -16,13 +16,13 @@ let invoice: Invoice[] = []; // array of invoices, Only invoices can be added to
 invoice.push(InvOne);
 invoice.push(InvTwo);
 
-invoice.forEach(inv => {
-    console.log(inv.client, inv.amount, inv.format());
-})
-InvTwo.amount = 900;
+// invoice.forEach(inv => {
+//     console.log(inv.client, inv.amount, inv.format());
+// })
+// InvTwo.amount = 900;
 
-console.log(InvOne, InvTwo);
-console.log(invoice);
+// console.log(InvOne, InvTwo);
+// console.log(invoice);
 // const form = document.querySelector('form');
 
 const form = document.querySelector('.new-item-form') as HTMLFormElement;
@@ -45,3 +45,38 @@ form.addEventListener('submit', (e: Event) => {
     }
     list.render(doc, type.value, 'end');
 })
+
+// GENERICS
+
+// Generics are a way to create reusable blocks of code that can be used with different types
+const addUID = <T extends object>(obj:T) => { // OR const addUID = <T extends {name:string}>(obj:T) => {
+    let uid = Math.floor(Math.random() * 100);
+    return {...obj, uid};
+}
+
+let docOne = addUID({name: 'Timothy', age: 25});
+
+console.log(docOne.name);
+
+
+// with interface
+
+interface Resource<T> {
+    uid: number;
+    resourceName: string;
+    data: T;
+}
+
+const docThree: Resource<object> = {
+    uid: 1,
+    resourceName: 'person',
+    data: {name: 'Timothy'}
+}
+
+const docFour: Resource<string[]> = {
+    uid: 2,
+    resourceName: 'shoppingList',
+    data: ['bread', 'milk', 'toilet roll']
+}
+
+console.log(docThree, docFour);
